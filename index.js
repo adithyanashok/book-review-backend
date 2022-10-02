@@ -33,7 +33,7 @@ app.use('/api/comment', commentRouter)
 app.use('/api/feedback', feedbackRouter)
 
 // Server
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
     connect()
     console.log('Server Connected')
 })
