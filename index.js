@@ -21,7 +21,7 @@ const connect = () => {
 }
 // Middlewares
 app.use(cors({
-    origin: "https://api-review-app.herokuapp.com/",
+    origin: "https://snazzy-twilight-089a42.netlify.app",
     credentials: true,
 }))
 app.use(cookieParser())
