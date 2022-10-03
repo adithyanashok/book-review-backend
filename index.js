@@ -22,7 +22,7 @@ const connect = () => {
 // Middlewares
 
 app.use(cors({
-    origin : 'https://snazzy-twilight-089a42.netlify.app/',
+    origin : 'https://snazzy-twilight-089a42.netlify.app',
     credentials: true,
 }));
 app.use(cookieParser())
