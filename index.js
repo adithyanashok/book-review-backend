@@ -24,7 +24,7 @@ const connect = () => {
 app.use(cors({
     origin : 'https://celebrated-tiramisu-fcf1d7.netlify.app',
     credentials: true,
-    Access-Control-Allow-Origin: '*'
+    
 
 }));
 app.use(cookieParser())
