@@ -21,7 +21,8 @@ const connect = () => {
 }
 // Middlewares
 app.use(cors({
-    
+    Access-Control-Allow-Origin: "https://snazzy-twilight-089a42.netlify.app",
+    credentials: true
 }))
 app.use(cookieParser())
 app.use(express.json())
