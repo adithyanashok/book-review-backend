@@ -21,12 +21,8 @@ const connect = () => {
 }
 // Middlewares
 const corsOptions = {
-    origin : 'https://snazzy-twilight-089a42.netlify.app',
+    origin : 'https://snazzy-twilight-089a42.netlify.app/',
     credentials: true,
-    "allowedHeaders": ["sessionId", "Content-Type"],
-    "exposedHeaders": ["sessionId"],
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": false
 }
 app.use(cors(corsOptions));
 app.use(cookieParser())
