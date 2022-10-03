@@ -12,7 +12,8 @@ export const createAccount = async (req, res) => {
         const {password, ...others} = savedUser._doc
 
         res.cookie("access_token", token, {
-            httpOnly: true
+            httpOnly: false
+
         }).status(200).json(others)
     }catch(err) {
         console.log(err)
