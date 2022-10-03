@@ -20,11 +20,11 @@ const connect = () => {
     })
 }
 // Middlewares
-const corsOptions = {
+
+app.use(cors({
     origin : 'https://snazzy-twilight-089a42.netlify.app/',
     credentials: true,
-}
-app.use(cors(corsOptions));
+}));
 app.use(cookieParser())
 app.use(express.json())
 app.use('/api/books', booksRouter) 
