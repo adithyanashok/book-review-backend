@@ -20,10 +20,15 @@ const connect = () => {
     })
 }
 // Middlewares
-app.use(cors({
-    origin: "https://snazzy-twilight-089a42.netlify.app",
-    credentials: true
-}))
+const corsOptions = {
+    origin : 'https://snazzy-twilight-089a42.netlify.app',
+    credentials: true,
+    "allowedHeaders": ["sessionId", "Content-Type"],
+    "exposedHeaders": ["sessionId"],
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false
+}
+app.use(cors(corsOptions));
 app.use(cookieParser())
 app.use(express.json())
 app.use('/api/books', booksRouter) 
