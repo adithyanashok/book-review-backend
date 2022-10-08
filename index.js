@@ -7,10 +7,15 @@ import userRouter from './routes/users.js'
 import commentRouter from './routes/comments.js'
 import feedbackRouter from './routes/feedback.js'
 import cookieParser from 'cookie-parser'
+import multer from 'multer'
+import path from 'path'
 import cors from 'cors'
+
 const app = express()
 dotenv.config()
+const __dirname = path.resolve();
 
+app.use("/images", express.static(path.join(__dirname, "/images")))
 // MongoDB Connection
 const connect = () => {
     mongoose.connect(process.env.MONGODB_URL).then(() => {
@@ -19,6 +24,23 @@ const connect = () => {
         console.log(err)
     })
 }
+// File upload
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "images");
+    },
+    filename: (req, file, cb) => {
+      cb(null, req.body.name);
+    },
+  });
+  
+  const upload = multer({ storage: storage });
+  app.post("/api/upload", upload.single("file"), (req, res) => {
+    res.status(200).json("File has been uploaded");
+  });
+  app.put("/api/upload", upload.single("file"), (req, res) => {
+    res.status(200).json("File has been uploaded");
+  });
 // Middlewares
 
 app.use(cors({

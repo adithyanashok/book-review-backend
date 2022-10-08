@@ -13,7 +13,7 @@ export const createAccount = async (req, res) => {
 
         res.cookie("access_token", token, {
             httpOnly: true,
-            maxAge: 360000 + new Data()
+            
 
         }).status(200).json(others)
     }catch(err) {

@@ -12,7 +12,7 @@ export const createBook = async (req, res) => {
 }
 export const fetchBooks = async (req, res) => {
     try{
-        const allBooks = await Books.find()
+        const allBooks = await Books.aggregate([{ $sample: { size: 100 } }]);
         res.status(200).json(allBooks)
     } catch(err) {
         console.log(err)
@@ -29,7 +29,15 @@ export const updateBook = async (req, res) => {
         // check userId and videoId
         if(req.user.id === book.userId){
             const updatedBook = await Books.findByIdAndUpdate(req.params.id, {
-                $set: req.body
+                $set:{
+                    bookImg: req.body.BookImg,
+                    bookTitle: req.body.bookTitle,
+                    authorName: req.body.authorName,
+                    rating: req.body.rating,
+                    bookLink: req.body.bookLink,
+                    contentName: req.body.contentName,
+                    content:req.body.content
+                }
             }, 
                 {new: true}
             )
@@ -66,6 +74,25 @@ export const fetchSingleBook = async (req ,res) => {
         const book = await Books.findById(req.params.id)
         res.status(200).json(book)
     }catch(err){
+        console.log(err)
+    }
+}
+export const search = async (req, res) => {
+    const query = req.query.q
+    try{
+        const book = await Books.find({
+            bookTitle: { $regex: query, $options: 'i' }
+        }).limit(40)
+        res.status(200).json(book)
+    }catch(err){
+        console.log(err)
+    }
+}
+export const fetchProfileBooks = async (req, res) => {
+    try{
+        const allBooks = await Books.find({userId: req.params.id})
+        res.status(200).json(allBooks)
+    } catch(err) {
         console.log(err)
     }
 }
