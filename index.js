@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
 // Middlewares
 
 app.use(cors({
-    origin : 'https://celebrated-tiramisu-fcf1d7.netlify.app',
+    origin : 'https://book-app-ten-orpin.vercel.app',
     credentials: true,
     
 
