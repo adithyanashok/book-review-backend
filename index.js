@@ -42,7 +42,10 @@ const storage = multer.diskStorage({
     res.status(200).json("File has been uploaded");
   });
 // Middlewares
-
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
 app.use(cors({
     origin : [
       'http://localhost:3000',
