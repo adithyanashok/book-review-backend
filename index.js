@@ -45,7 +45,7 @@ const storage = multer.diskStorage({
 
 app.use(cors({
     origin : [
-      'https://book-app-ten-orpin.vercel.app',
+      'https://book-app-ten-orpin.vercel.app/',
       'http://localhost:3000'
     ],
     credentials: true,
