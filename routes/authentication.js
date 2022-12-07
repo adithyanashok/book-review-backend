@@ -1,5 +1,5 @@
 import express from 'express'
-import { createAccount, signIn } from '../controllers/authentication.js'
+import { createAccount, signIn, logout } from '../controllers/authentication.js'
 
 const router = express.Router()
 
@@ -7,5 +7,7 @@ const router = express.Router()
 router.post('/signup', createAccount)
 // Signin
 router.post('/signin', signIn)
+// Logout
+router.post('/logout', logout)
 
 export default router
